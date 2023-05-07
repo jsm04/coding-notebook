@@ -1,0 +1,20 @@
+{
+	"name": "typescript-template-generic",
+	"version": "0.0.1",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@faker-js/faker": "^7.6.0",
+		"@types/node": "^20.1.0",
+		"tsx": "^3.12.7",
+		"typescript": "^5.0.4"
+	},
+	"dependencies": {
+		"reflect-metadata": "^0.1.13"
+	}
+}
