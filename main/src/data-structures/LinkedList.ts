@@ -99,20 +99,7 @@ class LinkedList<T> {
 			this.size++
 		}
 	}
-
-	// alternate
-	// append(value: T) {
-	// 	const newNode = new Node(value)
-	// 	if (!this.head) {
-	// 		this.head = newNode
-	// 	} else {
-	// 		this.tail!.next = newNode
-	// 		newNode.prev = this.tail
-	// 	}
-	// 	this.tail = newNode
-	// 	this.size++
-	// }
-
+	
 	public addFirst(value: T) {
 		if (this.isEmpty()) {
 			let tmp = new Node(value)
