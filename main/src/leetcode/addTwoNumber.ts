@@ -1,20 +1,24 @@
+/* Example 1
+Input: l1 = [2,4,3], l2 = [5,6,4]
+Output: [7,0,8]
+Explanation: 342 + 465 = 807.
+ */
+
 class ListNode {
 	val: number
-	next: ListNode | null
-	constructor(val?: number, next?: ListNode | null) {
-		this.val = val === undefined ? 0 : val
-		this.next = next === undefined ? null : next
+	next?: ListNode
+	constructor(val?: number, next?: ListNode) {
+		this.val = !val ? 0 : val
+		this.next = next
 	}
 }
 
-function addTwoNumbers(l1: ListNode | null, l2: ListNode | null): ListNode | null {
+const addTwoNumbers = function (l1?: ListNode, l2?: ListNode): ListNode | undefined {
 	let remainder = 0
-
 	let current = new ListNode(0)
-
 	let result = current
 
-	while (l1 !== null || l2 !== null || remainder > 0) {
+	while (l1 || l2 || remainder > 0) {
 		let sum = remainder
 		if (l1) {
 			sum += l1.val
@@ -29,6 +33,5 @@ function addTwoNumbers(l1: ListNode | null, l2: ListNode | null): ListNode | nul
 		current.next = new ListNode(Math.floor(sum % 10))
 		current = current.next
 	}
-
 	return result.next
 }

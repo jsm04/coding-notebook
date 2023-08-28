@@ -1,5 +1,14 @@
+/* Example 1:
+Input: nums = [2,7,11,15], target = 9
+Output: [0,1]
+Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+*/
+
+const testTarget = 7
+const nums = [3, 2, 4]
+
 // Iterative brute force
-const bruteForceTwoSum = (nums: number[], target: number): number[] | null => {
+const bruteForceTwoSum = (nums: number[], target: number): number[] | undefined => {
 	for (let i = 0; i < nums.length; i++) {
 		for (let j = i + 1; j < nums.length; j++) {
 			if (nums[i] + nums[j] === target) {
@@ -7,23 +16,25 @@ const bruteForceTwoSum = (nums: number[], target: number): number[] | null => {
 			}
 		}
 	}
-	return null
+	return
 }
 
 // Complement aproach
-const twoSum = (nums: number[], target: number): number[] | null => {
+const twoSum = (nums: number[], target: number): number[] | undefined => {
 	// creates an obj list that will work like value/index
-	let numObj: Record<string, number> = {}
+	const map: Record<string, number> = {}
+
 	for (let i = 0; i < nums.length; i++) {
-		let complement = target - nums[i]
-		if (numObj[complement] !== undefined) {
-			// if complement is found in the list return complements index[value] and current index
-			return [numObj[complement], i]
-		}
+		const complement = target - nums[i]
 		// creates key/value pair with value/index
-		numObj[nums[i]] = i
+		map[nums[i]] = i
+		// if use !map[complement] zero force coercion to false, use strict equality instead
+		if (map[complement] !== undefined) {
+			// if complement is found in the list return complements index[value] and current index
+			return [map[complement], i]
+		}
 	}
-	return null
+	return
 }
 
 // Data structure aproach
@@ -42,6 +53,7 @@ class TwoSum {
 	// Find if there exists any pair of numbers which sum is equal to the value.
 	public find(value: number): boolean {
 		this.sets.sort((a, b) => a - b)
+
 		for (let i = 0; i < this.sets.length; i++) {
 			if (this.sets[i] > value) break
 			for (let j = i + 1; j < this.sets.length; j++) {
@@ -53,8 +65,5 @@ class TwoSum {
 		return false
 	}
 }
-
-const testTarget = 18
-const nums = [2, 7, 11, 15]
 
 console.log(twoSum(nums, testTarget))
