@@ -32,11 +32,10 @@ const isValid = function (s: string): boolean {
 			stack.push(current)
 		}
 	}
-
 	if (stack.length > 0) return false
-
 	return true
 }
+
 /*
 Example 1:
 Input: s = "()"

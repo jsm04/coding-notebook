@@ -1,15 +1,3 @@
-/*
-Example 1:
-
-Input: jewels = "aA", stones = "aAAbbbb"
-Output: 3
-
-Example 2:
-
-Input: jewels = "z", stones = "ZZ"
-Output: 0
-*/
-
 const numJewelsInStones = function (jewels: string, stones: string): number {
 	const jewelSet = new Set()
 

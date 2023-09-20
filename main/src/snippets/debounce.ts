@@ -1,4 +1,7 @@
-function debounce<T extends (...args: any[]) => any>(func: T, wait: number): (...args: Parameters<T>) => void {
+const debounce = <T extends (...args: any[]) => any>(
+	func: T,
+	wait: number
+): ((...args: Parameters<T>) => void) => {
 	let timeout: NodeJS.Timeout
 
 	return function debouncedFunction(...args: Parameters<T>) {
@@ -13,8 +16,6 @@ function debounce<T extends (...args: any[]) => any>(func: T, wait: number): (..
 // Example usage
 function processInput(input: string) {
 	console.log(`Processing input: ${input}`)
-	// Simulate some time-consuming operation
-	// For example, calling an API or performing a database query
 }
 
 const debouncedProcessInput = debounce(processInput, 500)

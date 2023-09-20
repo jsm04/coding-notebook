@@ -1,4 +1,4 @@
-export const customMap = function <T, Cb>(
+export const map = function <T, Cb>(
 	array: T[],
 	callback: (value: T, index: number, array: T[]) => Cb
 ): Cb[] {
@@ -13,6 +13,6 @@ export const customMap = function <T, Cb>(
 
 // Usage
 const numbers = [1, 2, 3, 4, 5]
-const doubledNumbers = customMap(numbers, (value) => value * 2)
+const doubledNumbers = map(numbers, (value) => value * 2)
 
 console.log(doubledNumbers) // Output: [2, 4, 6, 8, 10]

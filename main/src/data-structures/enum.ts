@@ -1,16 +1,13 @@
-export const createEnumFromArray = function <T extends string>(values: T[]) {
+export const buildEnum = <T extends string>(values: T[]) => {
 	const enumObject = <{ [key in T]: key }>{}
-
 	for (const value of values) {
 		enumObject[value] = value
 	}
-
 	return enumObject
 }
 
-// Usage
 const colorsArray = ['Red', 'Green', 'Blue']
-const ColorEnum = createEnumFromArray(colorsArray)
+const ColorEnum = buildEnum(colorsArray)
 
 console.log(ColorEnum.Red) // Output: "Red"
 console.log(ColorEnum.Green) // Output: "Green"
