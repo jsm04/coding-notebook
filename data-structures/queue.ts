@@ -12,6 +12,9 @@ export class SimpleQueue<T> {
 	peek() {
 		return this.items[0]
 	}
+	log(){
+        console.log(this.items)
+	}
 }
 
 type QNode<T> = {

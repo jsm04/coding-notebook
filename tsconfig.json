@@ -21,8 +21,6 @@
 		"moduleResolution": "NodeNext",
 		"module": "NodeNext",
 		"isolatedModules": true,
-		"lib": ["ES2022"]
 	},
-	"include": ["lib/**/*", "workbench/workbench.ts"],
 	"exclude": ["node_modules"]
 }
