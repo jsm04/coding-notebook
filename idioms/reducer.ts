@@ -1,15 +1,15 @@
 export const reduce = <T, U>(
-	array: T[],
-	callback: (accumulator: U, currentValue: T, index: number, array: T[]) => U,
-	initialValue: U
+    array: T[],
+    callback: (accumulator: U, currentValue: T, index: number, array: T[]) => U,
+    initialValue: U
 ): U => {
-	let accumulator = initialValue
+    let accumulator = initialValue
 
-	for (let i = 0; i < array.length; i++) {
-		accumulator = callback(accumulator, array[i], i, array)
-	}
+    for (let i = 0; i < array.length; i++) {
+        accumulator = callback(accumulator, array[i], i, array)
+    }
 
-	return accumulator
+    return accumulator
 }
 
 // Example usage:
