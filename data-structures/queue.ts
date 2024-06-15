@@ -1,4 +1,4 @@
-import {} from '../idioms/either'
+import {} from '../idioms/functional/either'
 
 export class SimpleQueue<T> {
     items: T[] = []

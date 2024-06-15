@@ -5,9 +5,10 @@
     "arrowParens": "always",
     "bracketSpacing": true,
     "useTabs": false,
-    "tabWidth": 4,
+    "tabWidth": 6,
     "semi": false,
     "singleAttributePerLine": true,
     "proseWrap": "always",
-    "experimentalTernaries": true
+    "experimentalTernaries": true,
+    "useEditorConfig": true
 }
