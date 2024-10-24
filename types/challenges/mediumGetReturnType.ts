@@ -1,7 +1,6 @@
 /* _____________ Your Code Here _____________ */
-type MyReturnType<T extends Function> = T extends (...args: any) => infer R
-	? R
-	: never
+type MyReturnType<T extends Function> =
+    T extends (...args: any) => infer R ? R : never
 
 /*
   2 - Get Return Type

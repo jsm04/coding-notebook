@@ -1,7 +1,7 @@
 type UserInfo = {
-      name: string
-      lastname?: string
-      birthdate: Date
+    name: string
+    lastname?: string
+    birthdate: Date
 }
 
 type Nullable<T> = { [P in keyof T]: T[P] | null }

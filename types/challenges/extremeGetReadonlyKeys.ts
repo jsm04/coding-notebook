@@ -1,22 +1,18 @@
 // given type
-type Equal<X, Y> = (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y
-	? 1
-	: 2
-	? true
-	: false
+type Equal<X, Y> =
+    (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y ? 1 : 2 ? true
+    :   false
 
 /* _____________ Your Code Here _____________ */
 
 // type GetReadonlyKeys<T extends object, U extends keyof T = keyof T> = U extends any ? Equal<Pick<T, U>, Readonly<Pick<T, U>>> extends true ? U : never : never
 
-type GetReadonlyKeys<
-	T extends object,
-	U extends keyof T = keyof T,
-> = U extends any
-	? Equal<Pick<T, U>, Readonly<Pick<T, U>>> extends true
-		? U
-		: never
-	: never
+type GetReadonlyKeys<T extends object, U extends keyof T = keyof T> =
+    U extends any ?
+        Equal<Pick<T, U>, Readonly<Pick<T, U>>> extends true ?
+            U
+        :   never
+    :   never
 
 /*
   5 - Get Readonly Keys

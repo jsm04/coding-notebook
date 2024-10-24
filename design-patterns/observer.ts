@@ -1,100 +1,100 @@
 interface Listener<T> {
-      listen(value: T): void
+    listen(value: T): void
 }
 
 abstract class EventEmmiter<T> {
-      protected _listeners: Listener<T>[] = []
+    protected _listeners: Listener<T>[] = []
 
-      public attach(listener: Listener<T>) {
-            if (!this._listeners.some((x) => x === listener)) {
-                  this._listeners.push(listener)
-            } else {
-                  throw new Error('Observer already present')
-            }
-            return this.detach(listener)
-      }
+    public attach(listener: Listener<T>) {
+        if (!this._listeners.some((x) => x === listener)) {
+            this._listeners.push(listener)
+        } else {
+            throw new Error('Observer already present')
+        }
+        return this.detach(listener)
+    }
 
-      protected detach(listener: Listener<T>): void {
-            this._listeners.filter((x) => x !== listener)
-      }
+    protected detach(listener: Listener<T>): void {
+        this._listeners.filter((x) => x !== listener)
+    }
 
-      public notify(value: T): void {
-            this._listeners.forEach((o) => o.listen(value))
-      }
+    public notify(value: T): void {
+        this._listeners.forEach((o) => o.listen(value))
+    }
 }
 
 export class CartItem {
-      constructor(
-            public id: number,
-            public name: string,
-            public quantity: number,
-            public unitPrice: number
-      ) {}
+    constructor(
+        public id: number,
+        public name: string,
+        public quantity: number,
+        public unitPrice: number
+    ) {}
 }
 
 let orderNumber = 1
 
 class Order {
-      public readonly id: string
+    public readonly id: string
 
-      constructor(
-            public readonly userId: number,
-            public readonly userFirstName: string,
-            public readonly items: CartItem[]
-      ) {
-            const now = new Date()
-            this.id = `
+    constructor(
+        public readonly userId: number,
+        public readonly userFirstName: string,
+        public readonly items: CartItem[]
+    ) {
+        const now = new Date()
+        this.id = `
                   ${now.getFullYear()}-
                   ${(now.getMonth() + 1).toString().padStart(2, '0')}
 			${now.getDate().toString().padStart(2, '0')}
 			${orderNumber.toString().padStart(4, '0')}`
-            orderNumber++
-      }
+        orderNumber++
+    }
 }
 
 class EmailObserver implements Listener<Order> {
-      listen(message: Order): void {
-            console.log(`EMAIL: Your order #${message.id} has been approved.`)
-      }
+    listen(message: Order): void {
+        console.log(`EMAIL: Your order #${message.id} has been approved.`)
+    }
 }
 
 class SmsObserver implements Listener<Order> {
-      listen(message: Order): void {
-            const total = message.items
-                  .map((x) => x.quantity * x.unitPrice)
-                  .reduce((a, b) => a + b)
-            console.log(
-                  `SMS: ${message.userFirstName}, your order ${message.id} by the amount of $${total} has been approved.`
-            )
-      }
+    listen(message: Order): void {
+        const total = message.items
+            .map((x) => x.quantity * x.unitPrice)
+            .reduce((a, b) => a + b)
+        console.log(
+            `SMS: ${message.userFirstName}, your order ${message.id} by the amount of $${total} has been approved.`
+        )
+    }
 }
 
 class ShoppingCart extends EventEmmiter<Order> {
-      private readonly items: CartItem[] = []
+    private readonly items: CartItem[] = []
 
-      constructor(
-            private userId: number,
-            private userFirstName: string
-      ) {
-            super()
-      }
+    constructor(
+        private userId: number,
+        private userFirstName: string
+    ) {
+        super()
+    }
 
-      add(item: CartItem) {
-            const CartItem = this.items.find((x) => x.id === item.id)
+    add(item: CartItem) {
+        const CartItem = this.items.find((x) => x.id === item.id)
 
-            if (CartItem) {
-                  throw new Error(
-                        'The product has already been added to the shopping cart.'
-                  )
-            } else {
-                  this.items.push(item)
-            }
-      }
+        if (CartItem) {
+            throw new Error(
+                'The product has already been added to the shopping cart.'
+            )
+        } else {
+            this.items.push(item)
+        }
+    }
 
-      purchase() {
-            const order = new Order(this.userId, this.userFirstName, this.items)
-            this.notify(order)
-      }
+    purchase() {
+        const order = new Order(this.userId, this.userFirstName, this.items)
+        this.notify(order)
+    }
 }
 
 const smsObserver = new SmsObserver()

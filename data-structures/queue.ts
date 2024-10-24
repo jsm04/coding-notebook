@@ -22,7 +22,6 @@ export class SimpleQueue<T> {
 type QNode<T> = {
     value: T
     next?: QNode<T>
-
 }
 
 export class Queue<T> {

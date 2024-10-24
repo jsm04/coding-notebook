@@ -1,6 +1,6 @@
 /* _____________ Your Code Here _____________ */
 type TupleToObject<T extends readonly (string | symbol | number)[]> = {
-	[P in T[number]]: P
+    [P in T[number]]: P
 }
 
 /*

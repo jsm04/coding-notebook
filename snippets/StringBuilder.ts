@@ -1,4 +1,4 @@
-export class StringBuilder {
+export default class {
     private _lines: string[] = []
 
     write(line: string = ''): void {

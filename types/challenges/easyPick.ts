@@ -1,6 +1,6 @@
 /* _____________ Your Code Here _____________ */
 type MyPick<T, K extends keyof T> = {
-	[Prop in keyof T as Prop extends K ? Prop : never]: T[Prop]
+    [Prop in keyof T as Prop extends K ? Prop : never]: T[Prop]
 }
 
 /*
