@@ -1,7 +1,4 @@
-export const map = <T, Cb>(
-    array: T[],
-    callback: (value: T, index: number, array: T[]) => Cb
-): Cb[] => {
+export const map = <T, Cb>(array: T[], callback: (value: T, index: number, array: T[]) => Cb): Cb[] => {
     const result: Cb[] = []
     for (let i = 0; i < array.length; i++) {
         result.push(callback(array[i], i, array))

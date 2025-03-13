@@ -14,9 +14,7 @@ class Flyweight {
     public operation(uniqueState): void {
         const s = JSON.stringify(this.sharedState)
         const u = JSON.stringify(uniqueState)
-        console.log(
-            `Flyweight: Displaying shared (${s}) and unique (${u}) state.`
-        )
+        console.log(`Flyweight: Displaying shared (${s}) and unique (${u}) state.`)
     }
 }
 
@@ -49,9 +47,7 @@ class FlyweightFactory {
         const key = this.getKey(sharedState)
 
         if (!(key in this.flyweights)) {
-            console.log(
-                "FlyweightFactory: Can't find a flyweight, creating new one."
-            )
+            console.log("FlyweightFactory: Can't find a flyweight, creating new one.")
             this.flyweights[key] = new Flyweight(sharedState)
         } else {
             console.log('FlyweightFactory: Reusing existing flyweight.')
@@ -86,14 +82,7 @@ factory.listFlyweights()
 
 // ...
 
-function addCarToPoliceDatabase(
-    ff: FlyweightFactory,
-    plates: string,
-    owner: string,
-    brand: string,
-    model: string,
-    color: string
-) {
+function addCarToPoliceDatabase(ff: FlyweightFactory, plates: string, owner: string, brand: string, model: string, color: string) {
     console.log('\nClient: Adding a car to database.')
     const flyweight = ff.getFlyweight([brand, model, color])
 

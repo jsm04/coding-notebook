@@ -8,5 +8,6 @@
     "semi": false,
     "singleAttributePerLine": true,
     "proseWrap": "always",
-    "experimentalTernaries": true
+    "experimentalTernaries": true,
+    "printWidth": 999
 }

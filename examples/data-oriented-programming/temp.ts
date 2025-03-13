@@ -23,5 +23,3 @@ const human: Human = {
 }
 
 do_damage(human)
-
-log(human)

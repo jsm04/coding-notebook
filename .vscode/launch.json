@@ -4,13 +4,11 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Debug",
+            "name": "Debug with TSX",
             "runtimeExecutable": "tsx",
-            "program": "${file}",
-            "outFiles": [],
+            "program": "${file}", // Run the current open file
             "sourceMaps": true,
-            "args": ["-r", "ts-node/register"],
-            "cwd": "${workspaceFolder}",
+            "cwd": "${workspaceFolder}", // Set the current working directory
             "internalConsoleOptions": "openOnSessionStart"
         }
     ]

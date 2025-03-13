@@ -44,9 +44,7 @@ export class HashTable<K, V> {
     remove(key: K): void {
         const index = this.hash(key)
         if (this.table[index]) {
-            this.table[index] = this.table[index].filter(
-                ([storedKey]) => storedKey !== key
-            )
+            this.table[index] = this.table[index].filter(([storedKey]) => storedKey !== key)
         }
     }
 }

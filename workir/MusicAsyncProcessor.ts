@@ -1,7 +1,8 @@
 import * as tonal from 'tonal'
 const { log } = console
 
-const chroma = [0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0]
+// const chroma = [0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0]
+// const durations = [whole, half, quarter, eighth, sixteenth, thirty]
 
 const msInMinute = 60_000,
     bpm = 130,
@@ -13,8 +14,6 @@ const whole = beatDurationInMs,
     eighth = quarter / 2,
     sixteenth = eighth / 2,
     thirty = sixteenth / 2
-
-const durations = [whole, half, quarter, eighth, sixteenth, thirty]
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
@@ -43,12 +42,7 @@ class AsyncProcessor<T> {
         this.loopLenght = loopLength
         this.bars = loopLength / 4
 
-        const fillList = () =>
-            Array.from({ length: this.loopLenght }).forEach((_) =>
-                this.list.push([] as T[])
-            )
-
-        fillList()
+        Array.from({ length: this.loopLenght }).forEach((_) => this.list.push([] as T[]))
     }
 
     addToBeat(note: T) {
@@ -86,18 +80,9 @@ class AsyncProcessor<T> {
 }
 
 const randomBoolean = (): boolean => Math.random() < 0.5
-const randomInteger = (min: number, max: number): number =>
-    Math.floor(Math.random() * (max - min)) + min
+const randomInteger = (min: number, max: number): number => Math.floor(Math.random() * (max - min)) + min
 
-const notesList = [
-    new Note('c'),
-    new Note('d'),
-    new Note('e'),
-    new Note('f'),
-    new Note('g'),
-    new Note('a'),
-    new Note('b'),
-]
+const notesList = [new Note('c'), new Note('d'), new Note('e'), new Note('f'), new Note('g'), new Note('a'), new Note('b')]
 
 const asyncProcessor = new AsyncProcessor(120, 32)
 

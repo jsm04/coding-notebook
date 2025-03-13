@@ -30,29 +30,21 @@ interface Visitor {
 
 class ConcreteVisitor1 implements Visitor {
     public visitConcreteComponentA(element: ConcreteComponentA): void {
-        console.log(
-            `${element.exclusiveMethodOfConcreteComponentA()} + ConcreteVisitor1`
-        )
+        console.log(`${element.exclusiveMethodOfConcreteComponentA()} + ConcreteVisitor1`)
     }
 
     public visitConcreteComponentB(element: ConcreteComponentB): void {
-        console.log(
-            `${element.specialMethodOfConcreteComponentB()} + ConcreteVisitor1`
-        )
+        console.log(`${element.specialMethodOfConcreteComponentB()} + ConcreteVisitor1`)
     }
 }
 
 class ConcreteVisitor2 implements Visitor {
     public visitConcreteComponentA(element: ConcreteComponentA): void {
-        console.log(
-            `${element.exclusiveMethodOfConcreteComponentA()} + ConcreteVisitor2`
-        )
+        console.log(`${element.exclusiveMethodOfConcreteComponentA()} + ConcreteVisitor2`)
     }
 
     public visitConcreteComponentB(element: ConcreteComponentB): void {
-        console.log(
-            `${element.specialMethodOfConcreteComponentB()} + ConcreteVisitor2`
-        )
+        console.log(`${element.specialMethodOfConcreteComponentB()} + ConcreteVisitor2`)
     }
 }
 

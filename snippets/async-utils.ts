@@ -14,11 +14,7 @@ export function sleep(ms: number): Promise<void> {
     )
 }
 
-export async function retry<T>(
-    fn: () => Promise<T>,
-    retries: number,
-    delayMs: number
-): Promise<T> {
+export async function retry<T>(fn: () => Promise<T>, retries: number, delayMs: number): Promise<T> {
     let attempts = 0
     while (attempts < retries) {
         try {
@@ -32,10 +28,7 @@ export async function retry<T>(
     throw new Error('Max retries reached')
 }
 
-export function debounce<T extends (...args: any[]) => void>(
-    fn: T,
-    delayMs: number
-): T {
+export function debounce<T extends (...args: any[]) => void>(fn: T, delayMs: number): T {
     let timeoutId: NodeJS.Timeout
     return ((...args: Parameters<T>) => {
         clearTimeout(timeoutId)
@@ -61,11 +54,7 @@ export function withTimeout<T>(promise: Promise<T>, ms: number): Promise<T> {
     })
 }
 
-async function poll(
-    interval: number,
-    condition: () => boolean,
-    action: () => Promise<void>
-) {
+async function poll(interval: number, condition: () => boolean, action: () => Promise<void>) {
     while (!condition()) {
         await action()
         await new Promise((resolve) => setTimeout(resolve, interval))

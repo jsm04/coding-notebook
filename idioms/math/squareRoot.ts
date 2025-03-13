@@ -1,9 +1,7 @@
 export class SquareRootCalculator {
     static calculate(value: number): number {
         if (value < 0) {
-            throw new Error(
-                'Cannot calculate the square root of a negative number'
-            )
+            throw new Error('Cannot calculate the square root of a negative number')
         }
 
         if (value === 0 || value === 1) {

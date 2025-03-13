@@ -60,12 +60,8 @@ class EmailObserver implements Listener<Order> {
 
 class SmsObserver implements Listener<Order> {
     listen(message: Order): void {
-        const total = message.items
-            .map((x) => x.quantity * x.unitPrice)
-            .reduce((a, b) => a + b)
-        console.log(
-            `SMS: ${message.userFirstName}, your order ${message.id} by the amount of $${total} has been approved.`
-        )
+        const total = message.items.map((x) => x.quantity * x.unitPrice).reduce((a, b) => a + b)
+        console.log(`SMS: ${message.userFirstName}, your order ${message.id} by the amount of $${total} has been approved.`)
     }
 }
 
@@ -83,9 +79,7 @@ class ShoppingCart extends EventEmmiter<Order> {
         const CartItem = this.items.find((x) => x.id === item.id)
 
         if (CartItem) {
-            throw new Error(
-                'The product has already been added to the shopping cart.'
-            )
+            throw new Error('The product has already been added to the shopping cart.')
         } else {
             this.items.push(item)
         }

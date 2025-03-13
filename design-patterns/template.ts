@@ -26,15 +26,11 @@ abstract class AbstractClass {
     }
 
     protected baseOperation2(): void {
-        console.log(
-            'AbstractClass says: But I let subclasses override some operations'
-        )
+        console.log('AbstractClass says: But I let subclasses override some operations')
     }
 
     protected baseOperation3(): void {
-        console.log(
-            'AbstractClass says: But I am doing the bulk of the work anyway'
-        )
+        console.log('AbstractClass says: But I am doing the bulk of the work anyway')
     }
 
     /**

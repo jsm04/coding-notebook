@@ -2,7 +2,8 @@ const { log } = console
 
 class Max<T> {
     a: T
-    constructor(a) {
+
+    constructor(a: T) {
         this.a = a
     }
 

@@ -22,16 +22,12 @@ class ConcreteMediator implements Mediator {
 
     public notify(_sender: object, event: string): void {
         if (event === 'A') {
-            console.log(
-                'Mediator reacts on A and triggers following operations:'
-            )
+            console.log('Mediator reacts on A and triggers following operations:')
             this.component2.doC()
         }
 
         if (event === 'D') {
-            console.log(
-                'Mediator reacts on D and triggers following operations:'
-            )
+            console.log('Mediator reacts on D and triggers following operations:')
             this.component1.doB()
             this.component2.doC()
         }
@@ -55,15 +51,9 @@ class BaseComponent {
  * other components. They also don't depend on any concrete mediator classes.
  */
 class Component1 extends BaseComponent {
-    public doA(): void {
-        console.log('Component 1 does A.')
-        this.mediator.notify(this, 'A')
-    }
+    public doA(): void {}
 
-    public doB(): void {
-        console.log('Component 1 does B.')
-        this.mediator.notify(this, 'B')
-    }
+    public doB(): void {}
 }
 
 class Component2 extends BaseComponent {
